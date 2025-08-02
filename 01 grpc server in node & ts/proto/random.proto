@@ -1,1 +1,43 @@
-syntax = "proto3"
+syntax = "proto3";
+
+package randomPackage;
+
+service RandomService {
+  rpc GetRandomNumber (RandomRequest) returns (RandomResponse);
+  rpc GetRandomNumberStream ( RandomRequest) returns (stream RandomResponse);
+  rpc TodoList(stream TodoRequest) returns (stream TodoResponseList);
+    rpc Chat(stream ChatRequest) returns (stream ChatResponse) {};
+}
+
+message RandomRequest {
+  int32 min = 1;
+  int32 max = 100;
+}
+
+message RandomResponse {
+  int32 randomNumber = 1;
+}
+
+message TodoRequest {
+  string task = 1;
+}
+
+message TodoResponse {
+  string task = 1;
+  bool completed = 2;
+}
+
+message TodoResponseList {
+  repeated TodoResponse todos = 1;
+}
+
+
+
+message ChatRequest {
+  string message = 1;
+}
+
+message ChatResponse {
+  string username = 1;
+  string message = 2;
+}

@@ -3,10 +3,17 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start": "bun run server.ts",
+    "client": "bun run client.ts",
+    "dev": "bunx protolint --fix proto/*.proto && bun run index.ts",
+    "gen": "bash proto-gen.sh"
+  },
   "devDependencies": {
     "@grpc/grpc-js": "^1.13.4",
     "@grpc/proto-loader": "^0.8.0",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "protolint": "^0.55.6"
   },
   "peerDependencies": {
     "typescript": "^5"
